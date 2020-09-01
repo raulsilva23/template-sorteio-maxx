@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" href="../estilo/assets/images/favicon.png" />
     <link rel="stylesheet" href="../estilo/assets/style.css" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
@@ -29,7 +30,7 @@
     <main class="main_content">
 
         <article class="auth">
-            
+
 
             <div class="home_features">
                 <section class="container content">
@@ -51,7 +52,7 @@
                 </section>
             </div>
 
-            <div class="auth_content container content">
+            <div id="auth_content" class="auth_content container content">
                 <header class="auth_header">
                     <h1>Consulte seus cupons</h1>
 
@@ -61,10 +62,10 @@
                     <div class="ajax_response"></div>
                     <label>
                         <div>
-                            <span class="icon-user">Número do cartão</span>
+                            <span><i class="fa fa-credit-card"></i>&nbsp;Número do cartão</span>
                             <i style="font-size: 12px;">Inform um de seus cartões válidos.</i>
                         </div>
-                        <input type="number" name="cartao" value="" placeholder="658575858585858" required />
+                        <input type="tel" value="6059440073787008" name="cartao" maxlength="16" value="" placeholder="" required />
                     </label>
 
 
@@ -84,9 +85,11 @@
 
 
 
-            <section class="sorteios">
+            <section class="sorteios" id="sorteio_content" hidden>
                 <div class="sorteios_content container content">
                     <header class="sorteio_header">
+                        <h3 id="user-name"></h3>
+                        <hr>
                         <h2>Últimos sorteios</h2>
                         <p>Confira os sorteios e veja se voce foi sortedo :)</p>
                     </header>
@@ -119,8 +122,9 @@
                                     <th>Concurso</th>
                                     <th>Data</th>
                                     <th>Descrição do premio</th>
-                                    <th>Bilhete premiado</th>
-                                    <th>Situação</th>
+                                    <th>Número da sorte</th>
+                                    <th>Número sorteado</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -129,13 +133,9 @@
                         </table>
                         <span><a title="regras" href="#">Regras do Sorteio</a></span>
                     </body>
-
-
                 </div>
                 </div>
             </section>
-
-
 
         </article>
     </main>
@@ -144,6 +144,7 @@
 
     <script src="../estilo/assets/scripts.js"></script>
     <script src="../estilo/assets/js/scripts.js"></script>
+    <link rel="stylesheet" href="../estilo/assets/css/font-awesome.min.css">
 
 </body>
 

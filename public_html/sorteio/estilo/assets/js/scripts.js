@@ -20,7 +20,7 @@ $(document).ready(function () {
             if (response.success) {
                 if (response.data) {
                     const newsconcursos = $("#news-concursos")
-                    
+
 
                     response.data.forEach(element => {
                         const article = $("<article>")
@@ -29,7 +29,7 @@ $(document).ready(function () {
                         const header = $("<header>")
 
 
-                        const info = $(`<i style="font-size:14px">${element.concurso_data_sorteio}</i>`) 
+                        const info = $(`<i style="font-size:14px">${element.concurso_data_sorteio}</i>`)
 
                         const img = $("<img alt='' title=''>")
                         img.attr('src', element.concurso_path_image)
@@ -44,10 +44,10 @@ $(document).ready(function () {
                         newsconcursos.append(article)
                     });
 
-                   
+
 
                 } else {
-                    
+
                 }
             } else {
                 flash.fadeOut(100);
@@ -60,10 +60,6 @@ $(document).ready(function () {
 })
 
 $(function () {
-
-
-
-
     // mobile menu open
     $(".j_menu_mobile_open").click(function (e) {
         e.preventDefault();
@@ -138,11 +134,9 @@ $(function () {
         console.log("form", form)
 
         var load = $(".ajax_load");
-        var flashClass = "ajax_response";
-        var flash = $("." + flashClass);
 
         form.ajaxSubmit({
-            url: `${api}/saldo_detalhado`,
+            url: `${api}/get_user_info`,
             type: "POST",
             dataType: "json",
             data: {
@@ -150,26 +144,16 @@ $(function () {
             },
 
             beforeSend: function (h) {
-                load.fadeIn(200).css("display", "flex");
-                h.setRequestHeader('X-API-KEY', '40b7466e8d493d9d563aab8bf4f0ff163632ae5d')
+                load.fadeIn(200).css("display", "flex")
             },
             success: function (response) {
                 //redirect
-                if (response.redirect) {
-                    window.location.href = response.redirect;
+                if (response.success) {
+                    makeBilheteria(response)
+                }else{
+                    alert(response.msg)
                 }
 
-                //message
-                if (response.message) {
-                    if (flash.length) {
-                        flash.html(response.message).fadeIn(100).effect("bounce", 300);
-                    } else {
-                        form.prepend("<div class='" + flashClass + "'>" + response.message + "</div>")
-                            .find("." + flashClass).effect("bounce", 300);
-                    }
-                } else {
-                    flash.fadeOut(100);
-                }
             },
             complete: function () {
                 load.fadeOut(200);
@@ -185,3 +169,34 @@ $(function () {
 
 
 });
+
+function makeBilheteria(response){
+    $("#auth_content").hide()
+    $("#sorteio_content").show()
+
+    try{
+        $("#user-name").text(response.user.usuario_nome)
+    }catch(ex){}
+
+    try{
+        const table = $("#table-cncurso tbody")
+
+        response.bilhetes.forEach((element)=>{
+            const tr = $("<tr>")
+                .append($(`<td>${element.concurso_id}</td>`))
+                .append($(`<td>${element.concurso_data_sorteio}</td>`))
+                .append($(`<td>${element.concurso_desc_premiacao}</td>`))
+                .append($(`<td>${element.bilhete_num_sorte}</td>`))
+                .append($(`<td>${element.concurso_bilhete_premiado}</td>`))
+                .append($(`<td style="${(element.concurso_bilhete_premiado == element.bilhete_num_sorte) ? 'color:green': 'color:gray'}">${
+                    (element.concurso_bilhete_premiado == element.bilhete_num_sorte) ? 'Você GANHOU!!': (element.concurso_apurado == 1)?'Não foi desta vez :(': '-'
+                }</td>`))
+
+            table.append(tr)
+        });
+
+    }catch(ex){}
+
+
+
+}
