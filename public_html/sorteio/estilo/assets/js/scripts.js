@@ -291,9 +291,12 @@ function makeTableAuthConcurso(response) {
             if (element.concurso_bilhete_premiado) {
                 contentBilhetePremiado = `<strong style="color:green">${element.concurso_bilhete_premiado}</strong> <i class="fa fa-gift"></i>`
             }
+
+            const data_sorteio =  $.format.date(element.concurso_data_sorteio, "dd/MM/yyyy H:mm")
+
             const tr = $("<tr>")
                 .append($(`<td>${element.concurso_id}</td>`))
-                .append($(`<td>${element.concurso_data_sorteio}</td>`))
+                .append($(`<td>${data_sorteio}</td>`))
                 .append($(`<td>${element.concurso_desc_premiacao}</td>`))
                 .append($(`<td>${contentBilhetePremiado}</td>`))
                 .append($(`<td>${status_concurso}</td>`))
@@ -333,16 +336,28 @@ function makeTableBilheteria(response) {
             premiado = '-'
 
             if((element.concurso_bilhete_premiado) && element.concurso_bilhete_premiado == element.bilhete_num_sorte){
-                premiado = `<strong style="color:green">Premiado!!!</strong>`
+                premiado = `<strong style="color:green">uhul você ganhou!!! <i class="fa fa-smile-o"></i> <i class="fa fa-gift"></i></strong>`
             }else if(element.concurso_apurado == 1){
                 premiado = '<strong style="color:darkgray">Não foi desta vez! :(</strong>'
+            }else if(element.concurso_apurado == 0){
+                premiado = '<strong style="color:darkgray">Aguardando sorteio..<i class="fa fa-hourglass-half"></i></strong> '
             }
+
+            //money
+            const moneyTd = $(`<input type="text"/>`).val(element.bilhete_valor).maskMoney({
+                prefix: "R$ ",
+                decimal: ",",
+                thousands: "."
+            }).trigger('mask.maskMoney')
+
+
+
 
 
             const tr = $("<tr>")
                 .append($(`<td>${element.concurso_id}</td>`))
                 .append($(`<td>${element.bilhete_num_sorte}</td>`))
-                .append($(`<td>${element.bilhete_valor}</td>`))
+                .append($(`<td>${moneyTd.val()}</td>`))
                 .append($(`<td>${premiado}</td>`))
 
 
@@ -350,6 +365,7 @@ function makeTableBilheteria(response) {
         });
 
     } catch (ex) {
+        console.log("err", ex.message)
     }
 }
 

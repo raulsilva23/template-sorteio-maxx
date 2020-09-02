@@ -208,6 +208,8 @@
 
 <script src="../estilo/assets/scripts.js"></script>
 <script src="../estilo/assets/js/scripts.js"></script>
+<script src="../estilo/assets/js/jquery.maskMoney.min.js"></script>
+<script src="../estilo/assets/js/jquery-dateformat.js"></script>
 <link rel="stylesheet" href="../estilo/assets/css/font-awesome.min.css">
 
 </body>
