@@ -2,7 +2,7 @@
 
 <head>
     <script>
-        const api = 'https://servicos.maxxcard.com.br:2707/api/premiacao'
+        const api = 'https://servicos.maxxcard.com.br:2707'
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">

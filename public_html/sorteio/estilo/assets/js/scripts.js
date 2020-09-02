@@ -102,7 +102,7 @@ $(function () {
         var load = $(".ajax_load");
 
         form.ajaxSubmit({
-            url: `${api}/auth`,
+            url: `${api}/api/premiacao/auth`,
             type: "POST",
             dataType: "json",
             data: {
@@ -146,7 +146,7 @@ function getAllConcursos(makeTbConcurso = false) {
     const flash = $(".ajax_response");
 
     $.ajax({
-        url: `${api}/get_all_concurso`,
+        url: `${api}/api/premiacao/get_all_concurso`,
         type: "GET",
         dataType: "json",
 
@@ -186,7 +186,7 @@ function getAllBilheteFromConcurso(concurso_id) {
     const flash = $(".ajax_response");
 
     $.ajax({
-        url: `${api}/get_all_bilhetes_by_concurso`,
+        url: `${api}/api/premiacao/get_all_bilhetes_by_concurso`,
         type: "GET",
         dataType: "json",
 
@@ -246,10 +246,10 @@ function makeViewPublicConcursos(response) {
         const info = $(`<i style="font-size:14px">${element.concurso_data_sorteio}</i>`)
 
         const img = $("<img alt='' title=''>")
-        img.attr('src', element.concurso_path_image)
+        img.attr('src', `${api}/premiacao/imagens/${element.concurso_path_image}`)
 
         const h3 = $(`<h3>${element.concurso_id} - ${element.concurso_desc_premiacao}</h3>`)
-        const p = $(`<p>${element.concurso_detalhe_premoacao}</p>`)
+        const p = $(`<p>${element.concurso_detalhe_premiacao}</p>`)
 
         header.append(info).append(img).append(h3).append(p)
 
