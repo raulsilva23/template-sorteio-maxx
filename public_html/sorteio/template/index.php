@@ -50,6 +50,10 @@
             border-radius: 2px;
             margin: 2px;
         }
+
+        .recap iframe{
+            max-height: 80px !important;
+        }
     </style>
 
 </head>
@@ -107,15 +111,13 @@
                            required/>
                 </label>
 
+                <br/>
 
-                <label class="check">
-                    <input type="checkbox" name="save"/>
-                    <span>Lembrar dados?</span>
-                </label>
+                <div class="recap" style="position: relative; max-width: 80px;">
+                    <div class="g-recaptcha" data-sitekey="6LcY7dgUAAAAAMSi2RpHShIeIs1hRSBsHGb5ceNj"></div>
+                </div>
 
-                <div class="g-recaptcha" data-sitekey="6LcY7dgUAAAAAMSi2RpHShIeIs1hRSBsHGb5ceNj"></div>
-
-                <button class="auth_form_btn transition gradient gradient-green gradient-hover">Entrar</button>
+                <button style="z-index: 100;" class="auth_form_btn transition gradient gradient-green gradient-hover">Entrar</button>
             </form>
         </div>
 

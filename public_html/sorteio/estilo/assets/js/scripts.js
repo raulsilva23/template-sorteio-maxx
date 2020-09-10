@@ -271,6 +271,7 @@ function makeTableAuthConcurso(response) {
 
     try {
         const table = $("#table-cncurso tbody")
+        table.empty()
 
         response.data.forEach((element) => {
             let status_concurso = ''
@@ -279,7 +280,7 @@ function makeTableAuthConcurso(response) {
                     status_concurso = '<i style="color:purple">PENDENTE</i>'
                     break;
                 case 1:
-                    status_concurso = '<i style="color:green;font-weight: bold">PREMIADO</i>'
+                    status_concurso = '<i style="color:green;font-weight: bold">CONCLUÍDO</i>'
                     break;
                 case 2:
                     status_concurso = '<i style="color:orange">ACUMULADO</i>'
