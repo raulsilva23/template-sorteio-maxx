@@ -10,8 +10,8 @@
 
     <title>Premiação - Maxxcard</title>
 
-    <link rel="icon" type="image/png" href="../estilo/assets/images/favicon.png"/>
-    <link rel="stylesheet" href="../estilo/assets/style.css"/>
+    <link rel="icon" type="image/png" href="estilo/assets/images/favicon.png"/>
+    <link rel="stylesheet" href="estilo/assets/style.css"/>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <style>
@@ -107,7 +107,7 @@
                         <span><i class="fa fa-credit-card"></i>&nbsp;Número do cartão</span>
                         <i style="font-size: 12px;">Inform um de seus cartões válidos.</i>
                     </div>
-                    <input type="tel" value="6059440073787008" name="cartao" maxlength="16" value="" placeholder=""
+                    <input type="tel" value="" name="cartao" maxlength="16" value="" placeholder=""
                            required/>
                 </label>
 
@@ -208,11 +208,11 @@
 </main>
 
 
-<script src="../estilo/assets/scripts.js"></script>
-<script src="../estilo/assets/js/scripts.js"></script>
-<script src="../estilo/assets/js/jquery.maskMoney.min.js"></script>
-<script src="../estilo/assets/js/jquery-dateformat.js"></script>
-<link rel="stylesheet" href="../estilo/assets/css/font-awesome.min.css">
+<script src="estilo/assets/scripts.js"></script>
+<script src="estilo/assets/js/scripts.js"></script>
+<script src="estilo/assets/js/jquery.maskMoney.min.js"></script>
+<script src="estilo/assets/js/jquery-dateformat.js"></script>
+<link rel="stylesheet" href="estilo/assets/css/font-awesome.min.css">
 
 </body>
 
